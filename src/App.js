@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './App.css';
-import { icon, Icon } from 'leaflet';
+import { Icon } from 'leaflet';
 import * as parkData from "./data/skateboard-parks.json"
 
-export default function App() {
+function App() {
 
 	const [activePark, setActivePark] = useState(null);
+	const skater = new Icon({
+		iconUrl: "/skateboarding.svg",
+		iconSize: [25, 25]
+	});
 
 	return (
 		<MapContainer center={[45.4, -75.7]} zoom={12} scrollWheelZoom={false}>
@@ -25,7 +29,7 @@ export default function App() {
 						onClick={() => {
 							setActivePark(park);
 						}}
-						icon={icon}
+						icon={skater}
 					/>
 				))
 			}
