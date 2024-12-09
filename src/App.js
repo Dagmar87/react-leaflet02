@@ -29,6 +29,24 @@ export default function App() {
 					/>
 				))
 			}
+			{
+				activePark && (
+					<Popup
+						position={[
+							park.geometry.coordinates[1],
+							park.geometry.coordinates[0]
+						]}
+						onClose={() => {
+							setActivePark(null);
+						}}
+					>
+						<div>
+							<h2>{activePark.properties.NAME}</h2>
+							<p>{activePark.properties.DESCRIPTIO}</p>
+						</div>
+					</Popup>
+				)
+			}
 		</MapContainer>
 	);
 }
